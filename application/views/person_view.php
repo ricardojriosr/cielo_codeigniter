@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Person List</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/bootstrap.min.css'?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/jquery.dataTables.css'?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/dataTables.bootstrap4.css'?>">
 </head>
@@ -12,12 +12,12 @@
 <div class="container">
     <!-- Page Heading -->
     <div class="row">
+        <h1 class="text-center">Person List</h1>
         <div class="col-12">
             <div class="col-md-12">
-                <h1>Person
-                    <small>List</small>
+
                     <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
-                </h1>
+
             </div>
 
             <table class="table table-striped" id="mydata">
@@ -38,10 +38,16 @@
     </div>
 
 </div>
-
+;
         <!-- MODAL ADD -->
-            <form>
+            <form id="formAdd">
             <div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="alert alert-danger fade in alert-dismissible show" id="error_div" style="display:none">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:20px">×</span>
+                  </button>
+                  <strong>Error!</strong> <span id="error_message">Here is the Error Message</span>.
+              </div>
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -49,30 +55,31 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
+                    <br>
                   </div>
                   <div class="modal-body">
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Person Name</label>
                             <div class="col-md-10">
-                              <input type="text" name="name" id="person_name" class="form-control" placeholder="Person Name">
+                              <input type="text" name="name" id="person_name" class="form-control" placeholder="Person Name" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Person DOB</label>
                             <div class="col-md-10">
-                              <input type="date" name="DOB" id="person_dob" class="form-control" placeholder="Person Date of Birth">
+                              <input type="date" name="DOB" id="person_dob" class="form-control" placeholder="Person Date of Birth" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Person Email</label>
                             <div class="col-md-10">
-                              <input type="email" name="email" id="person_email" class="form-control" placeholder="Person Email">
+                              <input type="email" name="email" id="person_email" class="form-control" placeholder="Person Email" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Favorite Color</label>
                             <div class="col-md-10">
-                              <input type="email" name="favorite_color" id="person_favorite_color" class="form-control" placeholder="Favorite Color">
+                              <input type="email" name="favorite_color" id="person_favorite_color" class="form-control" placeholder="Favorite Color" required>
                             </div>
                         </div>
                   </div>
@@ -82,13 +89,20 @@
                   </div>
                 </div>
               </div>
+              <br>
             </div>
             </form>
         <!--END MODAL ADD-->
 
         <!-- MODAL EDIT -->
-        <form>
+        <form id="formEdit">
             <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="alert alert-danger fade in alert-dismissible show" id="error_div_edit" style="display:none">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:20px">×</span>
+                  </button>
+                  <strong>Error!</strong> <span id="error_message_edit">Here is the Error Message</span>.
+              </div>
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -108,25 +122,25 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Person Name</label>
                             <div class="col-md-10">
-                              <input type="text" name="name" id="person_name_edit" class="form-control" placeholder="Person Name">
+                              <input type="text" name="name" id="person_name_edit" class="form-control" placeholder="Person Name" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Person DOB</label>
                             <div class="col-md-10">
-                              <input type="date" name="DOB" id="person_dob_edit" class="form-control" placeholder="Person Date of Birth">
+                              <input type="date" name="DOB" id="person_dob_edit" class="form-control" placeholder="Person Date of Birth" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Person Email</label>
                             <div class="col-md-10">
-                              <input type="email" name="email" id="person_email_edit" class="form-control" placeholder="Person Email">
+                              <input type="email" name="email" id="person_email_edit" class="form-control" placeholder="Person Email" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Favorite Color</label>
                             <div class="col-md-10">
-                              <input type="email" name="favorite_color" id="person_favorite_color_edit" class="form-control" placeholder="Favorite Color">
+                              <input type="email" name="favorite_color" id="person_favorite_color_edit" class="form-control" placeholder="Favorite Color" required>
                             </div>
                         </div>
                   </div>
@@ -169,12 +183,14 @@
 <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.js'?>"></script>
 <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.dataTables.js'?>"></script>
 <script type="text/javascript" src="<?php echo base_url().'assets/js/dataTables.bootstrap4.js'?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.validate.js'?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'assets/js/validations.js'?>"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
         show_person(); //call function show all person
 
-        $('#mydata').dataTable();
+
 
         //function show all person
         function show_person(){
@@ -200,6 +216,7 @@
                                 '</tr>';
                     }
                     $('#show_data').html(html);
+                    $('#mydata').dataTable();
                 }
 
             });
@@ -211,6 +228,9 @@
             var person_dob = $('#person_dob').val();
             var person_email = $('#person_email').val();
             var person_favorite_color = $('#person_favorite_color').val();
+            if (!validateFields()) {
+                return;
+            }
             $.ajax({
                 type : "POST",
                 url  : "<?php echo site_url('person/save')?>",
@@ -222,7 +242,7 @@
                     person_favorite_color:person_favorite_color
                 },
                 success: function(data){
-                    //console.log(data);
+                    console.log(data);
                     $('#person_name').val("");
                     $('#person_dob').val("");
                     $('#person_email').val("");
@@ -257,6 +277,9 @@
             var person_dob = $('#person_dob_edit').val();
             var person_email = $('#person_email_edit').val();
             var person_favorite_color = $('#person_favorite_color_edit').val();
+            if (!validateFields(true)) {
+                return;
+            }
             $.ajax({
                 type : "POST",
                 url  : "<?php echo site_url('person/update')?>",

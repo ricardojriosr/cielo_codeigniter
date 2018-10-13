@@ -14,7 +14,7 @@ class Person_model extends CI_Model{
                 'favorite_color' => $this->input->post('person_favorite_color'),
             );
         $result=$this->db->insert('person',$data);
-        return $result;
+        return $data;
     }
 
     function update_person(){
@@ -30,7 +30,8 @@ class Person_model extends CI_Model{
         $this->db->set('favorite_color', $person_favorite);
         $this->db->where('id', $person_id);
         $result=$this->db->update('person');
-        //return $result;
+        return $result;
+        /*
         return json_encode(array(
             'id' => $person_id,
             'name' => $person_name,
@@ -38,6 +39,7 @@ class Person_model extends CI_Model{
             'email' => $person_email,
             'favorite' => $person_favorite
         ));
+        */
     }
 
     function delete_person(){
