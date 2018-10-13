@@ -19,6 +19,11 @@
                     <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
 
             </div>
+            <?php
+            if (isset($data)) {
+                print_r($data);
+            }
+            ?>
 
             <table class="table table-striped" id="mydata">
                 <thead>
