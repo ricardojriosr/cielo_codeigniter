@@ -14,14 +14,14 @@ class Person extends CI_Controller{
     }
 
     function save(){
-        if (!validateFields()) {
+        if ($this->validateFields()) {
             $data=$this->person_model->save_person();
             echo json_encode($data);
         }
     }
 
     function update(){
-        if (validateFields()) {
+        if ($this->validateFields()) {
             $data=$this->person_model->update_person();
             echo json_encode($data);
         }

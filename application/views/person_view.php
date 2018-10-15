@@ -15,15 +15,31 @@
         <h1 class="text-center">Person List</h1>
         <div class="col-12">
             <div class="col-md-12">
+              <?php
+              if (isset($data)) {
+              ?>
+                <div class="alert alert-danger fade in alert-dismissible show" id="error_div_edit" style="display:none">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true" style="font-size:20px">×</span>
+                    </button>
+                    <strong>Error!</strong> <span id="error_message_edit"><ul>
+                    <?php
+                    foreach ($data as $index=>$value) {
+                    ?>
+                        <li><?php echo $value; ?></li>
+                    <?php
+                    }
+                    ?></ul>
+                    </span>.
+                </div>
+              <?php
+              }
+              ?>
 
                     <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
 
             </div>
-            <?php
-            if (isset($data)) {
-                print_r($data);
-            }
-            ?>
+
 
             <table class="table table-striped" id="mydata">
                 <thead>
@@ -247,7 +263,7 @@
                     person_favorite_color:person_favorite_color
                 },
                 success: function(data){
-                    console.log(data);
+                    //console.log(data);
                     $('#person_name').val("");
                     $('#person_dob').val("");
                     $('#person_email').val("");
@@ -297,7 +313,7 @@
                     person_favorite_color:person_favorite_color
                 },
                 success: function(data){
-                    console.log(data);
+                    //console.log(data);
                     $('#person_id_edit').val("");
                     $('#person_name_edit').val("");
                     $('#person_dob_edit').val("");
